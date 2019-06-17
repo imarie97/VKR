@@ -5,7 +5,6 @@ from individual import Individual
 import newton
 from vector import Vector
 
-
 a_par = 0.4
 b_par = 0.4
 c_par = 0.4
@@ -74,7 +73,6 @@ def mutate_function(alpha1, beta1, alpha2, beta2, alpha3, beta3):
             sol = newton.newton(new_ind, a_par, b_par, c_par)
 
         return new_ind
-
     return f
 
 def center_of_mass(vs):
@@ -151,7 +149,7 @@ def ga(limit, alpha1, beta1, alpha2, beta2, alpha3, beta3, crop, epoch, a_p, b_p
             population = selection(population, crop)
 
         center = center_of_mass_pop(population)
-        print(center)
+        # print(center)
         pop_len = len(population)
 
         # cross
@@ -168,4 +166,4 @@ def ga(limit, alpha1, beta1, alpha2, beta2, alpha3, beta3, crop, epoch, a_p, b_p
         population.sort(key=operator.itemgetter(1))
 
     population.sort(key=operator.itemgetter(1))
-    return population[:(crop//2)]
+    return population[:(crop)] #??
