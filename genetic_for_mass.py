@@ -160,10 +160,10 @@ def ga(limit, alpha1, beta1, alpha2, beta2, alpha3, beta3, crop, epoch, a_p, b_p
 
         population += mutation_list
         while len(population) < crop:
-            childs = crossover(population, pop_len, pcross, fit, center, limit)
-            mutation_list = mutation(childs, pmut, fit, center, limit, mutation_f)
+            # childs = crossover(population, pop_len, pcross, fit, center, limit)
+            mutation_list = mutation(population, pmut, fit, center, limit, mutation_f)
             population += mutation_list
         population.sort(key=operator.itemgetter(1))
 
     population.sort(key=operator.itemgetter(1))
-    return population[:(crop)] #??
+    return population[:(crop)]

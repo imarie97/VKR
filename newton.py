@@ -8,7 +8,7 @@ a_par = 0.4
 b_par = 0.4
 c_par = 0.4
 eps = 0.1
-kmax = 5
+kmax = 10
 zeroApproximation = Vector(0.0, 0.0, 0.0, radians(0), radians(0), radians(0))
 q = []
 
@@ -47,18 +47,17 @@ def f1_z(v):
     return 0
 
 def f1_alpha(v):
-    return a_par * (sin(v.gamma) * sin(v.alpha) + sin(v.gamma) * cos(v.alpha)
-                    - cos(v.gamma) * sin(v.alpha) * sin(v.beta)
-                    + cos(v.gamma) * sin(v.beta) * cos(v.alpha))
+    return -b_par * (cos(v.gamma) * sin(v.beta) * cos(v.alpha) + sin(v.gamma) * sin(v.alpha)) \
+           + c_par * (sin(v.gamma) * cos(v.alpha) - cos(v.gamma) * sin(v.alpha) * sin(v.beta))
 
 def f1_beta(v):
-    return a_par * (cos(v.gamma) * cos(v.alpha) * cos(v.beta)
-                    + cos(v.gamma) * cos(v.beta) * sin(v.alpha))
+    return -b_par * (cos(v.gamma) * cos(v.beta) * sin(v.alpha)) \
+           + c_par * cos(v.gamma) * cos(v.alpha) * cos(v.beta)
 
 def f1_gamma(v):
-    return a_par * (- cos(v.gamma) * cos(v.alpha) + cos(v.gamma) * sin(v.alpha)
-                    - sin(v.gamma) * cos(v.alpha) * sin(v.beta)
-                    - sin(v.gamma) * sin(v.beta) * sin(v.alpha))
+    return b_par * (sin(v.gamma) * sin(v.beta) * sin(v.alpha) + cos(v.gamma) * cos(v.alpha)) \
+           + c_par * (cos(v.gamma) * sin(v.alpha) - sin(v.gamma) * cos(v.alpha) * sin(v.beta))
+
 
 def f2_x(v):
     return -1
@@ -70,17 +69,16 @@ def f2_z(v):
     return 0
 
 def f2_alpha(v):
-    return a_par * (2 * sin(v.gamma) * sin(v.alpha) + cos(v.gamma) * sin(v.alpha) * sin(v.beta)
-                    - cos(v.gamma) * sin(v.beta) * cos(v.alpha))
+    return b_par * (cos(v.gamma) * sin(v.beta) * cos(v.alpha) + sin(v.gamma) * sin(v.alpha)) \
+           - c_par * (sin(v.gamma) * cos(v.alpha) - cos(v.gamma) * sin(v.alpha) * sin(v.beta))
 
 def f2_beta(v):
-    return a_par * (-cos(v.gamma) * cos(v.alpha) * cos(v.beta)
-                    - cos(v.gamma) * cos(v.beta) * sin(v.alpha))
+    return b_par * (cos(v.gamma) * cos(v.beta) * sin(v.alpha)) \
+           -c_par * (cos(v.gamma) * cos(v.alpha) * cos(v.beta))
 
 def f2_gamma(v):
-    return a_par * (-cos(v.gamma) * cos(v.alpha) + cos(v.gamma) * sin(v.alpha)
-                    + sin(v.gamma) * cos(v.alpha) * sin(v.beta)
-                    + sin(v.gamma) * sin(v.beta) * sin(v.alpha))
+    return -b_par * (sin(v.gamma) * sin(v.beta) * sin(v.alpha) + cos(v.gamma) * cos(v.alpha)) \
+           -c_par * (cos(v.gamma) * sin(v.alpha) - sin(v.gamma) * cos(v.alpha) * sin(v.beta))
 
 def f3_x(v):
     return 0
@@ -92,14 +90,14 @@ def f3_z(v):
     return 0
 
 def f3_alpha(v):
-    return a_par * (-cos(v.gamma) * cos(v.alpha) - sin(v.gamma) * sin(v.alpha) * sin(v.beta))
+    return -c_par * (cos(v.gamma) * cos(v.alpha) + sin(v.gamma) * sin(v.alpha) * sin(v.beta))
 
 def f3_beta(v):
-    return a_par * (sin(v.gamma) * sin(v.beta) + sin(v.gamma) * cos(v.alpha) * cos(v.beta))
+    return a_par * (sin(v.gamma) * sin(v.beta)) + c_par * (sin(v.gamma) * cos(v.alpha) * cos(v.beta))
 
 def f3_gamma(v):
-    return a_par * (-cos(v.gamma) * cos(v.beta) + sin(v.gamma) * sin(v.alpha)
-                    + cos(v.gamma) * cos(v.alpha) * sin(v.beta))
+    return -a_par * (cos(v.gamma) * cos(v.beta)) \
+           + c_par * (sin(v.gamma) * sin(v.alpha) + cos(v.gamma) * cos(v.alpha) * sin(v.beta))
 
 def f4_x(v):
     return 0
@@ -111,15 +109,14 @@ def f4_z(v):
     return 0
 
 def f4_alpha(v):
-    return a_par * (cos(v.gamma) * cos(v.alpha))
+    return c_par * (sin(v.gamma) * sin(v.alpha) * sin(v.beta) + cos(v.gamma) * cos(v.alpha))
 
 def f4_beta(v):
-    return a_par * (- sin(v.gamma) * (-pow(sin(v.beta), 2) + pow(cos(v.beta), 2))
-                    - sin(v.gamma) * sin(v.beta))
+    return -a_par * (sin(v.gamma) * sin(v.beta)) - c_par * (sin(v.gamma) * cos(v.alpha) * cos(v.beta))
 
 def f4_gamma(v):
-    return a_par * (- cos(v.gamma) * cos(v.beta) * sin(v.beta) - sin(v.gamma) * sin(v.alpha)
-                    + cos(v.gamma) * cos(v.beta))
+    return a_par * (cos(v.gamma) * cos(v.beta)) \
+           - c_par * (cos(v.gamma) * cos(v.alpha) * sin(v.beta) + sin(v.gamma) * sin(v.alpha))
 
 
 def f5_x(v):
@@ -132,10 +129,10 @@ def f5_z(v):
     return -1
 
 def f5_alpha(v):
-    return a_par * (cos(v.alpha) * cos(v.beta))
+    return b_par * (cos(v.alpha) * cos(v.beta))
 
 def f5_beta(v):
-    return a_par * (cos(v.beta) - sin(v.beta) * sin(v.alpha))
+    return a_par * (cos(v.beta)) - b_par * (sin(v.beta) * sin(v.alpha))
 
 def f5_gamma(v):
     return 0
@@ -151,10 +148,10 @@ def f6_z(v):
     return -1
 
 def f6_alpha(v):
-    return a_par * (-cos(v.alpha) * cos(v.beta))
+    return -b_par * (cos(v.alpha) * cos(v.beta))
 
 def f6_beta(v):
-    return a_par * (sin(v.alpha) * sin(v.beta) - cos(v.beta))
+    return -a_par * cos(v.beta) + b_par * (sin(v.alpha) * sin(v.beta))
 
 def f6_gamma(v):
     return 0
