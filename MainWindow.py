@@ -32,7 +32,7 @@ class App(QMainWindow):
 
                 if not self.CheckAngle(alpha) or not self.CheckAngle(beta) or not self.CheckAngle(gamma):
                     self.ShowEror('Ошибка',"Некорректное значение угла",'Значение угла должно быть больше 0 '
-                                                                        'и меньше 180 градусов')
+                                                                        'и меньше 30 градусов')
                 else:
                     l1 = L/2 - a/2
                     l2 = L/2 - b/2
@@ -43,10 +43,10 @@ class App(QMainWindow):
 
             except Exception:
                 self.ShowEror('Ошибка','Введены некорректные данные','Проверьте значения полей - '
-                                                                     'все значения (кроме а) должны быть целым числом')
+                                                                     'все значения (кроме а, b, c) должны быть целым числом')
         except Exception:
             self.ShowEror('Ошибка', 'Введены некорректные данные',
-                          'поле "a" должно быть числом')
+                          'поля "a, b, c" должны быть числами')
 
     @pyqtSlot()
     def btnDefault_clicked(self):
@@ -56,8 +56,8 @@ class App(QMainWindow):
         self.txbA.setText('20')
         self.txbB.setText('20')
         self.txbG.setText('20')
-        self.txbChr.setText('500')
-        self.txbEpo.setText('7')
+        self.txbChr.setText('2000')
+        self.txbEpo.setText('4')
         self.txL.setText('2')
         self.txa.setText('0.8')
         self.txb.setText('0.8')
@@ -73,7 +73,7 @@ class App(QMainWindow):
         retval = msg.exec_()
 
     def CheckAngle(self, angle):
-        return angle > 0 and angle < 180
+        return angle > 0 and angle < 30
 
 
 if __name__ == '__main__':

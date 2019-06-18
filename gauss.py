@@ -7,7 +7,6 @@ class GEPP():
            b -- n x 1 столбец
     output: x -- решение Ax=b
     """
-
     def __init__(self, A, b, doPricing=True):
         #super(GEPP, self).__init__()
 
