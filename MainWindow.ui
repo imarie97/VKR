@@ -126,7 +126,7 @@
          <bool>true</bool>
         </property>
         <property name="text">
-         <string> </string>
+         <string/>
         </property>
         <property name="frame">
          <bool>true</bool>
@@ -159,7 +159,7 @@
       <rect>
        <x>200</x>
        <y>30</y>
-       <width>81</width>
+       <width>91</width>
        <height>21</height>
       </rect>
      </property>
@@ -194,7 +194,7 @@
       <rect>
        <x>200</x>
        <y>60</y>
-       <width>81</width>
+       <width>91</width>
        <height>21</height>
       </rect>
      </property>
@@ -229,7 +229,7 @@
       <rect>
        <x>200</x>
        <y>90</y>
-       <width>81</width>
+       <width>91</width>
        <height>21</height>
       </rect>
      </property>
@@ -264,7 +264,7 @@
       <rect>
        <x>200</x>
        <y>120</y>
-       <width>81</width>
+       <width>91</width>
        <height>21</height>
       </rect>
      </property>
@@ -299,8 +299,8 @@
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>271</width>
-       <height>23</height>
+       <width>281</width>
+       <height>21</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -327,8 +327,8 @@
       <rect>
        <x>10</x>
        <y>60</y>
-       <width>271</width>
-       <height>23</height>
+       <width>281</width>
+       <height>21</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_9">

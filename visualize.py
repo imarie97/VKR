@@ -1,4 +1,5 @@
 import numpy as np
+import time
 from matplotlib import gridspec
 
 from individual import Individual
@@ -7,7 +8,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.ticker import MaxNLocator
 
-def vizualize(v, name):
+def vizualize(v, level, name, start):
 
     population = [Individual.getSol(x[0]) for x in v]
     print(len(population))
@@ -27,9 +28,9 @@ def vizualize(v, name):
     # ax = fig.add_subplot(121, projection='3d')
 
     # ax = plt.axes(projection='3d')
-    ax.set_xlim3d(-1, 1)
-    ax.set_ylim3d(-1, 1)
-    ax.set_zlim3d(-1, 1)
+    ax.set_xlim3d(-level, level)
+    ax.set_ylim3d(-level, level)
+    ax.set_zlim3d(-level, level)
     pnt3d = ax.scatter3D(xcod, ycod, zcod, c = zcod)
     plt.colorbar(pnt3d)
     cbaxes = fig.add_axes([0.07, 0.3, 0.01, 0.4])
@@ -39,28 +40,42 @@ def vizualize(v, name):
     ax.set_zlabel("z axis")
 
     ax1 = plt.subplot(333)
-    ax1.set_xlim(-1, 1)
-    ax1.set_ylim(-1, 1)
+    ax1.set_xlim(-level, level)
+    ax1.set_ylim(-level, level)
     ax1.scatter(xcod, ycod)
+
+    t = [round(min(xcod), 3), round(max(xcod), 3)]
+    plt.xticks(t, t)
+
+    t = [round(min(ycod), 3), round(max(ycod), 3)]
+    plt.yticks(t, t)
+
     ax1.set_xlabel("x axis")
     ax1.set_ylabel("y axis")
 
     ax2 = plt.subplot(336)
-    ax2.set_xlim(-1, 1)
-    ax2.set_ylim(-1, 1)
+    ax2.set_xlim(-level, level)
+    ax2.set_ylim(-level, level)
     ax2.scatter(xcod, zcod)
+
+    t = [round(min(xcod), 3), round(max(xcod), 3)]
+    plt.xticks(t, t)
+    t = [round(min(zcod), 3), round(max(zcod), 3)]
+    plt.yticks(t, t)
+
     ax2.set_xlabel("x axis")
     ax2.set_ylabel("z axis")
 
     ax3 = plt.subplot(339)
-    ax3.set_xlim(-1, 1)
-    ax3.set_ylim(-1, 1)
+    ax3.set_xlim(-level, level)
+    ax3.set_ylim(-level, level)
     ax3.scatter(ycod, zcod)
+
+    t = [round(min(ycod), 3), round(max(ycod), 3)]
+    plt.xticks(t, t)
+    t = [round(min(zcod), 3), round(max(zcod), 3)]
+    plt.yticks(t, t)
+
     ax3.set_xlabel("y axis")
     ax3.set_ylabel("z axis")
-
     plt.show()
-
-
-if __name__=='__main__':
-    vizualize([])

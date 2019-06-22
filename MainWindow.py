@@ -1,5 +1,6 @@
 import sys
 
+import time
 from PyQt5 import uic
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QWidget, QPushButton, QMessageBox
@@ -38,8 +39,12 @@ class App(QMainWindow):
                     l2 = L/2 - b/2
                     l3 = L/2 - c/2
                     limit = [l1, l2, l3,  alpha, beta, gamma]
+                    start = time.time()
                     v = ga(limit, -l1, l1, -l2, l2, -l3, l3, crop, epoch, a, b, c)
-                    vizualize(v, 'Optimal zone')
+                    end = time.time()
+                    print(end - start)
+                    vizualize(v, L/2,  'Optimal zone', start)
+
 
             except Exception:
                 self.ShowEror('Ошибка','Введены некорректные данные','Проверьте значения полей - '
