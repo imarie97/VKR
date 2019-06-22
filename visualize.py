@@ -11,8 +11,6 @@ def vizualize(v, name):
 
     population = [Individual.getSol(x[0]) for x in v]
     print(len(population))
-    #
-    # print(Vector.as_list(population[0]))
 
     xcod = [Vector.as_list(x)[0] for x in population]
     ycod = [Vector.as_list(x)[1] for x in population]

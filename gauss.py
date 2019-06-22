@@ -49,7 +49,6 @@ class GEPP():
                 self.b[row] = self.b[row] - multiplier * self.b[k]
 
     def _backsub(self):
-        # Back Substitution
 
         self.x = np.zeros(self.n)
         for k in range(self.n - 1, -1, -1):
